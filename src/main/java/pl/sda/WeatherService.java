@@ -34,13 +34,37 @@ public class WeatherService {
             System.out.println(data);
 
             String temp = jsonObject.getJSONObject("current").get("temp_c").toString();
-            System.out.println(temp);
-
-
+           // System.out.println(temp);
             current.setTemp_c(Double.parseDouble(temp));
 
+            String chmury = jsonObject.getJSONObject("current").get("cloud").toString();
+//            System.out.println(chmury);
+            current.setCloud(Integer.parseInt(chmury));
+
+            String biomet = jsonObject.getJSONObject("current").get("feelslike_c").toString();
+//            System.out.println(biomet);
+            current.setFeelslike_c(Float.parseFloat(biomet));
+
+            String wilgoc = jsonObject.getJSONObject("current").get("humidity").toString();
+//            System.out.println(wilgoc);
+            current.setHumidity(Integer.parseInt(wilgoc));
+
+            String poraDnia = jsonObject.getJSONObject("current").get("is_day").toString();
+//            System.out.println(poraDnia);
+            current.setIs_day(Integer.parseInt(poraDnia));
+
+            String hPa = jsonObject.getJSONObject("current").get("pressure_in").toString();
+//            System.out.println(hPa);
+            current.setPressure_in(Float.parseFloat(hPa));
+
+            String wiatr = jsonObject.getJSONObject("current").get("wind_kph").toString();
+//            System.out.println(wiatr);
+            current.setWind_kph(Float.parseFloat(wiatr));
 
 
+            String wiatrWporywachDo = jsonObject.getJSONObject("current").get("gust_kph").toString();
+//            System.out.println(wiatrWporywachDo);
+            current.setGust_kph(Float.parseFloat(wiatrWporywachDo));
 
         } catch (IOException e) {
             e.printStackTrace();
